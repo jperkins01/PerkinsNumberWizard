@@ -8,7 +8,9 @@ public class NumberWizard : MonoBehaviour
     void Start()
     {
         int max = 1000;
+        // sets max value to 1000
         int min = 1;
+        // sets min value to 1
 
         Debug.Log("Welcome to number wizard dude");
         // Used for introduction to game
@@ -18,11 +20,26 @@ public class NumberWizard : MonoBehaviour
         // The user can not pick a number greater than 1000
         Debug.Log("The lowest number you can pick is: " + min);
         // The user can not pick a number less than 1
+        Debug.Log("Tell me if your number is higher or lower than 500");
+        Debug.Log("Push Up = higher, Push Down = lower, Push Enter = Correct");
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            Debug.Log("Up Arrow key was pressed");
+        }
+        if (Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            Debug.Log("Down Arrow key was pressed");
+        }
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            Debug.Log("You hit Enter");
+        }
     }
+
 }
