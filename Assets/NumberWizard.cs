@@ -22,8 +22,9 @@ public class NumberWizard : MonoBehaviour {
         // The user can not pick a number greater than 1000
         Debug.Log("The lowest number you can pick is: " + min);
         // The user can not pick a number less than 1
-        Debug.Log("Tell me if your number is higher or lower than 500");
+        Debug.Log("Tell me if your number is higher or lower than: " + guess);
         Debug.Log("Push Up = higher, Push Down = lower, Push Enter = Correct");
+        max = max + 1;
 
     }
 
@@ -32,19 +33,22 @@ public class NumberWizard : MonoBehaviour {
     {
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
-            Debug.Log("Up Arrow key was pressed");
-            // used to use up arrow 
             min = guess;
-            Debug.Log(guess);
+            guess = (max + min) / 2;
+            Debug.Log("Is it higher or lower than..." + guess);
+            
         }
         else if (Input.GetKeyDown(KeyCode.DownArrow))
         {
-            Debug.Log("Down Arrow key was pressed");
-            // used to use down arrow
+
+            
+            max = guess;
+            guess = (max + min) / 2;
+            Debug.Log("Is it higher or lower than..." + guess);
         }
         else if (Input.GetKeyDown(KeyCode.Return))
         {
-            Debug.Log("You hit Enter");
+            Debug.Log("I am so smart!");
             // used to use enter key
         }
     }
