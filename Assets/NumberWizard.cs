@@ -3,16 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class NumberWizard : MonoBehaviour { 
-        int max = 1000;
+        int max;
         // sets max value to 1000
-        int min = 1;
+        int min;
         // sets min value to 1
-        int guess = 500;
+        int guess;
 
     // Start is called before the first frame update
     void Start()
     {
-       
+        StartGame();
+
+    }
+    void StartGame()
+    {
+        max = 1000;
+        min = 1;
+        guess = 500;
+
 
         Debug.Log("Welcome to number wizard dude");
         // Used for introduction to game
@@ -25,7 +33,6 @@ public class NumberWizard : MonoBehaviour {
         Debug.Log("Tell me if your number is higher or lower than: " + guess);
         Debug.Log("Push Up = higher, Push Down = lower, Push Enter = Correct");
         max = max + 1;
-
     }
 
     // Update is called once per frame
@@ -33,9 +40,9 @@ public class NumberWizard : MonoBehaviour {
     {
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
-            min = guess;
-            guess = (max + min) / 2;
-            Debug.Log("Is it higher or lower than..." + guess);
+            min = guess; 
+            NextGuess();
+            
             
         }
         else if (Input.GetKeyDown(KeyCode.DownArrow))
@@ -43,14 +50,18 @@ public class NumberWizard : MonoBehaviour {
 
             
             max = guess;
-            guess = (max + min) / 2;
-            Debug.Log("Is it higher or lower than..." + guess);
+            NextGuess();
         }
         else if (Input.GetKeyDown(KeyCode.Return))
         {
             Debug.Log("I am so smart!");
+            StartGame();
             // used to use enter key
         }
     }
-
+    void NextGuess()
+    {
+        guess = (max + min) / 2;
+        Debug.Log("Is it higher or lower than..." + guess);
+    }
 }
